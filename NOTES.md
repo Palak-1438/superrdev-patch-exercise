@@ -20,4 +20,10 @@
 
 Aborting replaced fetches avoids unnecessary work; a request may still reach the server before cancellation, but its response cannot replace newer UI state. Search still sends a request per keystroke. There is no frontend test runner configured, so frontend behavior was checked interactively in the browser rather than with automated tests. The Oracle SQL is a reference artifact and is not executed by the local H2 app, so production-dialect behavior remains unverified.
 
-No unrelated changes were made. Handwritten explanations are intentionally not included.
+## Not changed
+
+I did not address unrelated API hardening or move pagination into the database to keep this patch focused on the confirmed search and UI bugs. Server-side pagination is the biggest remaining risk as the task table grows because the repository currently loads all matching rows before paging.
+
+## Tools and AI
+
+I used the Copilot SDK assistant in VS Code to help inspect the project and reason through the patch. I reviewed the source and diffs, ran the Maven test, Vite build and API check, and exercised the UI in the browser. No AI-generated handwritten explanations are included; I will add my own photos separately.
